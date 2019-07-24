@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="dataApp">
+
+<head>
+    <title>Clock!</title>
+    <script src="angular.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="parentCtrl.js"></script>
+
+    <script src="abCtrl.js"></script>
+    <script src="sumCtrl.js"></script>
+    <script src="divCtrl.js"></script>
+    <script src="aCtrl.js"></script>
+    <script src="bCtrl.js"></script>
+
+    <script src="fac.service.js"></script>
+    <script src="value.service.js"></script>
+    <script src="service.service.js"></script>
+    <script src="const.service.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+
+    <div ng-controller="abCtrl">
+        <p>A: <input type="number" ng-model="value.a" /></p>
+        <p>b: <input type="number" ng-model="value.b" /></p>
+        <!-- <button ng-click="check()">fdsf</button> -->
+        <p>green-yellow: <input name="col" type="radio" ng-click="colors('gy')" /></p>
+        <p>blue-brown: <input name="col" type="radio" ng-click="colors('bb')" /></p>
+    </div>
+
+    <div ng-controller="sumCtrl">
+        <p>{{value.a}} + {{value.b}} = </p>
+        <p ng-class="{bbp : value.prefColor == 'bb' && isPos() , 
+                        bbn : value.prefColor == 'bb' && !isPos() , 
+                        gantzLapidAshkenaziBogip : value.prefColor == 'gy' && isPos(),
+                        gantzLapidAshkenaziBogin : value.prefColor == 'gy' && !isPos()}">{{value.a+value.b}}</p>
+    </div>
+
+    <div ng-controller="aCtrl">
+        <button ng-click="fullAtri()">refresh</button>
+        <p ng-repeat="m in fullA">{{m}}</p>
+    </div>
+
+
+    <div ng-controller="bCtrl">
+        <button ng-click="fullAtri()">refresh</button>
+        <p ng-repeat="m in fullB">{{m}}</p>
+    </div> 
+
+    <br>
+</body>
+
+</html>
