@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="dataApp">
+
+<head>
+    <title>Clock!</title>
+    <script src="angular.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="parentCtrl.js"></script>
+    <script src="brotherCtrl.js"></script>
+    <script src="Mobile.js"></script>
+</head>
+
+<body>
+
+    <div ng-controller="parentCtrl">
+
+
+        <table border="1">
+            <tr style="background:lightyellow ; padding: 10px">
+                <th>#</th>
+                <th ng-click="sortBy('model')">MODEL</th>
+                <th ng-click="sortBy('color')">COLOR</th>
+                <th ng-click="sortBy('price')">PRICE</th>
+                <th></th>
+            </tr>
+            <button ng-click="rever">kdjsfhdsk</button>
+            <tr ng-repeat="m in devices | orderBy: sortVar : rev | filter: searching()  " > 
+                <td> {{$index}} </td>
+                <td>{{m.model}}</td>
+                <td>{{m.color}}</td>
+                <td>{{m.price}}</td>
+                <td><button ng-click="removeItem($index)">X</button></td>
+            </tr>
+            <tr>
+                <td> <input type="text" ng-bing="inputToFilter('color')" /> </td>
+                <td><input type="text" ng-bind="inputToFilter('model')" /></td>
+                <td<input type="text" ng-bind="inputToFilter('price')" />></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <div>
+            <p> MODEL = <input type="text" ng-model="phone.model" /></p>
+            <p> COLOR = <input type="text" ng-model="phone.color" /></p>
+            <p> PRICE = <input type="text" ng-model="phone.price" /></p>
+        </div>
+        <button ng-click="addItem()"> Add Device</button>
+        <p>ID = <input type="text" ng-model="id" /></p>
+        <button ng-click="updateItem()">Update Device</button>
+
+    </div>
+
+
+    <div ng-controller="brotherCtrl">
+        <p> number of phones: {{count}}</p>
+
+    </div>
+
+    <br>
+</body>
+
+</html>
